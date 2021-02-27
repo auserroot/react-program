@@ -8,31 +8,34 @@ import Footer from "./Footer";
 
 //列表
 class Goodslist extends Component {
-  state = {
-    allPrice: 0,
-    goods: [
-      {
-        id: 1,
-        checked: false,
-        title: "首款海绵包包",
-        img:
-          "https://www.17sucai.com/preview/177065/2016-09-12/Sc-5/images/cp_gg.png",
-        color: "颜色：黑色",
-        price: 68.0,
-        num: 1,
-      },
-      {
-        id: 2,
-        checked: false,
-        title: "首款海绵包包",
-        img:
-          "https://www.17sucai.com/preview/177065/2016-09-12/Sc-5/images/cp_gg.png",
-        color: "颜色：黑色",
-        price: 68.0,
-        num: 1,
-      },
-    ],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      allPrice: 0,
+      goods: [
+        {
+          id: 1,
+          checked: false,
+          title: "首款海绵包包",
+          img:
+            "https://www.17sucai.com/preview/177065/2016-09-12/Sc-5/images/cp_gg.png",
+          color: "颜色：黑色",
+          price: 68.0,
+          num: 1,
+        },
+        {
+          id: 2,
+          checked: false,
+          title: "首款海绵包包",
+          img:
+            "https://www.17sucai.com/preview/177065/2016-09-12/Sc-5/images/cp_gg.png",
+          color: "颜色：黑色",
+          price: 68.0,
+          num: 1,
+        },
+      ],
+    };
+  }
 
   //商品选中
   checkItem = (e) => {
@@ -144,20 +147,17 @@ class Goodslist extends Component {
 
 //合计
 class Cartfooter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: false,
-    };
-  }
+  state = {
+    checked: "",
+  };
   checkItem = () => {
-    let check = this.state;
-    check.checked = !this.state.checked;
-    this.setState = {
-      checked: check.checked,
-    };
-    this.props.changeItem(check.checked);
-    console.log(check.checked);
+    let check = this.state.checked;
+    check = !this.props.checked;
+    this.props.getCheck(check);
+    this.setState({
+      checked: check,
+    });
+    console.log(this.props.checked);
   };
   render() {
     return (
@@ -189,7 +189,7 @@ export default class Cart extends Component {
     this.state = {
       allPrice: 0,
       checked: false,
-      goods: "",
+      goods: [],
     };
   }
   render() {
@@ -199,11 +199,15 @@ export default class Cart extends Component {
           <Headitem />
         </div>
         <div className="list_box">
-          <Goodslist getMsgHandler={this.getMsgHandler} />
+          <Goodslist
+            getMsgHandler={this.getMsgHandler}
+            checked={this.state.checked}
+            goods={this.state.goods}
+          />
           <Cartfooter
+            getCheck={this.getCheck}
             price={this.state.allPrice}
             checked={this.state.checked}
-            changeItem={this.changeItem}
           />
         </div>
         <div className="footer_box">
@@ -212,29 +216,26 @@ export default class Cart extends Component {
       </div>
     );
   }
-  changeItem = (v) => {
-    let check = this.state.checked;
-    check = v;
-    this.setState = {
-      checked: check,
-    };
-    console.log(check);
-    console.log(this.state.checked);
-  };
   getMsgHandler = (val, b) => {
     console.log(val);
     let totalprice = 0;
+    let check = this.state.checked;
     b.map((p) => {
       if (p.checked) {
         totalprice += p.num * p.price;
-        this.checked = p.checked;
+        check = p.checked;
       }
-      return { check: this.checked, price: totalprice };
+      return { check: check, price: totalprice };
     });
     this.setState({
       allPrice: totalprice,
-      checked: this.checked,
+      checked: check,
       goods: b,
+    });
+  };
+  getCheck = (v) => {
+    this.setState({
+      checked: v,
     });
   };
 }
