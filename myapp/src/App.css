@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+
+.nav {
+  display: flex;
+  width: 50vw;
+  height: 30px;
+}
+
+.item {
+  list-style: none;
+  flex: 1;
+}
+
+.red {
+  color: red;
+  font-size: 100px;
+}

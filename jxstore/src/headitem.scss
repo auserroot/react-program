@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+}
+.header {
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  background-color: #ee394a;
+  color: #fff;
+  padding: 0 0.6rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+  .h-left {
+    width: 1.5rem;
+    height: 1.5rem;
+    .iconfont {
+      font-size: 1.3rem;
+      line-height: 2.5rem;
+    }
+  }
+  .h-right {
+    .item {
+      font-size: 0.9rem;
+      line-height: 2.5rem;
+    }
+  }
+  .h-mid {
+    font-size: 1rem;
+    line-height: 2.5rem;
+  }
+}
