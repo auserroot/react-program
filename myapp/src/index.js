@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 // import App from './App';
-import reportWebVitals from './reportWebVitals';
-import App from './标签属性'
-import Jsx from './jsxExample.jsx'
+import reportWebVitals from "./reportWebVitals";
+import App from "./App";
+// import Jsx from './jsxExample.jsx'
 ReactDOM.render(
   // <React.StrictMode>
   //   {/* <App /> */}
   // </React.StrictMode>,
   <div>
-    <Jsx />
+    {/* <Jsx /> */}
     <App />
   </div>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
