@@ -9,7 +9,7 @@ class Child extends Component {
       <div>
         <span>App子组件</span>
         <br />
-        <span>{this.props.msg}</span>
+        <span>父传子：{this.props.msg}</span>
         <br />
         <button onClick={this.sendMsg}>传值给App父组件传值</button>
       </div>
@@ -33,7 +33,7 @@ export default class App extends Component {
     return (
       <div>
         <Child msg={"hi"} getMsg={this.getMsg}></Child>
-        <span>{this.state.msg}</span>
+        <span>子传父：{this.state.msg}</span>
       </div>
     );
   }
