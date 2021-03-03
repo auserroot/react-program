@@ -4,7 +4,7 @@ import "./footer.scss";
 
 export default class Footer extends Component {
   getFooter = (params) => {
-    let footer = this.state.navbars.map((v) => (
+    let footer = this.state.navBars.map((v) => (
       <div className="item" key={v.id}>
         <i className={"iconfont " + v.icon}></i>
         <span className="item-txt">{v.txt}</span>
@@ -13,7 +13,7 @@ export default class Footer extends Component {
     return footer;
   };
   state = {
-    navbars: [
+    navBars: [
       {
         txt: "首页",
         icon: "icon-menu-home-normal",
