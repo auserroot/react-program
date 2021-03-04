@@ -27,7 +27,6 @@ export default class App extends Component {
         <Link to="/">Home</Link>
         <Link to="/info">Info</Link>
         <Link to="/about">About</Link>
-        {/* Switch 只匹配一个路由 */}
         <Switch>
           <Route path="/" exact component={Home}></Route>
           <Route path="/info" component={Info}></Route>
